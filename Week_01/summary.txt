@@ -1,0 +1,33 @@
+Queue源代码分析总结：
+    http://fuseyism.com/classpath/doc/java/util/Queue-source.html
+    继承了Collection，内部方法有
+    add 添加元素 元素满的情况下抛出异常
+    offer 添加元素 元素没有限制情况下 跟add的区别
+    remove 返回头元素 如果队列为空那么就返回NoSuchElementException
+    poll 同样是返回头元素不同点是如果队列为空 返回null而不是异常类
+    element 返回头元素 但是不会删除头元素，如果队列为空那么就返回NoSuchElementException
+    peek 返回头元素 同样也是不删除元素，但是队列为空则是返回null
+PriorityQueue源代码分析总结：
+    https://docs.oracle.com/javase/10/docs/api/java/util/PriorityQueue.html
+    优先队列继承抽象类 AbstractQueue<E>
+    实现了序列化 Serializable
+    基于优先堆实现的没有界限的优先队列。
+    构造函数有
+        PriorityQueue()	通过默认出生化容量11，按照自然顺序排序
+        PriorityQueue​(int initialCapacity)	用户提供容量大小，同样按照自然排序
+        PriorityQueue​(int initialCapacity, Comparator<? super E> comparator)用户提供容量大小，大小排序就需要用户指定排序规则
+        PriorityQueue​(Collection<? extends E> c)	指定的集合来创建队列
+        PriorityQueue​(Comparator<? super E> comparator)	指定排序规则来创建默认的容器大小的队列
+        PriorityQueue​(PriorityQueue<? extends E> c)	指定队列来创建新队列
+        PriorityQueue​(SortedSet<? extends E> c)	通过SortedSet来创建队列
+    方法有
+        add​(E e) 添加一个元素返回boolean值
+        clear()	 清空队列不返回值
+        comparator() 返回一个比较器来排序对垒，或者null如果队列排序是根据自然排序规则
+      	contains​(Object o)是否包含某个元素
+        iterator()返回队列的一个迭代集合
+       	offer​(E e) 插入优先队列元素
+        remove​(Object o)移除一个元素
+        Spliterator<E>	spliterator()
+        toArray() 把队列转换为数组
+        <T> T[]	toArray​(T[] a) 返回数组包含队列所有元素，
